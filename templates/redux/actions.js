@@ -65,7 +65,7 @@ export const getAllowance = async(dispatch) => {
       });
       
     } catch(error) {
-    
+      console.log(error)
     }
   
 }
