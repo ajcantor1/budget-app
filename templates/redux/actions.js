@@ -53,7 +53,8 @@ export const getAllowance = async(dispatch) => {
       console.log(accessToken)
       let response = await axios.get('api/get_allowance', {
         headers: {
-          "Authorization" : `Bearer ${accessToken}`
+          "Authorization" : `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
         }
       });
       
@@ -79,7 +80,8 @@ export const addExpense = async(dispatch, expenseCost, description) => {
     {amount: expenseCost, item_name: description},
     {
       headers: {
-        "Authorization" : `Bearer ${accessToken}`
+        "Authorization" : `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
       }
     });
     
@@ -104,7 +106,8 @@ export const deleteExpense = async(dispatch, expense_id) => {
     {expense_id: expense_id},
     {
       headers: {
-        "Authorization" : `Bearer ${accessToken}`
+        "Authorization" : `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
       }
     });
     
