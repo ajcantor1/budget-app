@@ -20,7 +20,7 @@ def get_allowance():
 
     username = get_jwt_identity()
     user = Users.query.filter_by(username = username).one_or_none()
-
+    print("get_allowance")
     if not user:
         return jsonify(message='failed'), 401    
     else:
@@ -31,9 +31,10 @@ def get_allowance():
             .filter(extract('month', Allowances.month) == str(current.month)) \
             .filter(extract('year', Allowances.month) == str(current.year)) \
             .one_or_none()
-       
+        print("allowance")
+        print(allowance)
         if allowance == None:
-
+            
             allocation = Allocations.query \
                 .filter(extract('month', Allocations.month) == current.month) \
                 .filter(extract('year', Allocations.month) == current.year) \
