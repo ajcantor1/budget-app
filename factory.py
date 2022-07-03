@@ -17,7 +17,7 @@ def createApp():
     app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=30)
 
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = 'postgres://vgwifshpalzzid:877ad5af646dbb085df34192c4990126c5d0a8a12a2458acca87dbfc485325bc@ec2-44-206-11-200.compute-1.amazonaws.com:5432/d2clpbpfggs58g'
+    app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql://vgwifshpalzzid:877ad5af646dbb085df34192c4990126c5d0a8a12a2458acca87dbfc485325bc@ec2-44-206-11-200.compute-1.amazonaws.com:5432/d2clpbpfggs58g'
     
     
     db.init_app(app)
