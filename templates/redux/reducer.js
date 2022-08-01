@@ -14,7 +14,7 @@ const AppReducer = (state = initialState, action) => {
       return {...state, user: action.payload.username}
 
     case SIGN_OUT:
-      return {...state,  user: ''}
+      return {user: null, allowance: 0, expenses: []}
 
     case GET_ALLOWANCE:
       console.log(action.payload.expenses)

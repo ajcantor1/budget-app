@@ -13,10 +13,11 @@ import {
     Notes,
     ModalButtonContainer,
     ModalContainer,
-    ModalButton
+    ModalButton, 
+    SignOutLink,
 } from './components'
 import {useDispatch, useSelector} from 'react-redux'
-import {getAllowance, addExpense, deleteExpense, refresh} from '../../redux/actions'
+import {getAllowance, addExpense, deleteExpense, refresh, signOut} from '../../redux/actions'
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -106,9 +107,15 @@ const Dashboard = () => {
         await deleteExpense(dispatch, expense_id)
     }
 
+    const handleSignOut = async() => {
+        await signOut();
+        navigate('/login');
+    }
+
     return (
         <StyledContainer>
             <InnerContainer>
+                <SignOutLink onClick={() => handleSignOut()}></SignOutLink>
                 <AddButton onClick={() => setOpenModal(true)}>+</AddButton>
                 <SVGContainer>             
                     <Circle radius={75} percent={calculatePercent()} color={getColor()}></Circle>

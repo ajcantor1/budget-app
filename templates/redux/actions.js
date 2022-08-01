@@ -38,7 +38,8 @@ export const refresh = async(dispatch) => {
 }
 
 export const signOut = async(dispatch) => {
-  localStorage.removeItem('access_token', data.access_token);
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
   dispatch ({
     type: SIGN_OUT,
   });
