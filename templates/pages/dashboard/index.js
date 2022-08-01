@@ -16,7 +16,7 @@ import {
     ModalButton
 } from './components'
 import {useDispatch, useSelector} from 'react-redux'
-import {getAllowance, addExpense, deleteExpense} from '../../redux/actions'
+import {getAllowance, addExpense, deleteExpense, refresh} from '../../redux/actions'
 
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -36,12 +36,12 @@ const Dashboard = () => {
     useEffect(() => {
         (async () => {
       
-            if(state.allowance == 0) {
-                await getAllowance(dispatch);
-            }
+            await refresh();
+            await getAllowance(dispatch);
+            
         })();
 
-    }, [state.amount, state.expenses]);
+    }, []);
 
 
     const calculateAmount = () => {
