@@ -20,8 +20,9 @@ export const SignOutLink = styled.button`
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  font-size: 12px;
+  font-size: 14px;
   color:  #064b70;
+  align-self: end;
 `
 
 export const AddButton = styled.button`
