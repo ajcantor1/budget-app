@@ -48,7 +48,7 @@ def get_allowance():
                     .filter(extract('month', Allowances.month) == past_month.month) \
                     .filter(extract('year', Allowances.month) == past_month.year) \
                     .one_or_none()
-                amount = allocation.amount
+                amount = allocation.amount-50
                 if prev_allowance:
                     expenses = Expenses.query \
                         .filter_by(user_id = user.id) \
