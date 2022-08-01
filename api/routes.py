@@ -57,7 +57,7 @@ def get_allowance():
                         .all()
 
                     total_sum = sum([expense.amount for expense in expenses])
-                    amount = allocation.amount+prev_allowance.amount-total_sum,
+                    amount = allocation.amount-50
 
                 allowance = Allowances(
                     user_id = user.id, 
