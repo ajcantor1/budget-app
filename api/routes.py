@@ -41,19 +41,26 @@ def get_allowance():
                 .one_or_none()
             print(f'allocation:{allocation.amount}')
             if allocation != None:
+                
+                prev_month = current.month-1
+                prev_year  = current.year
 
-                past_month = current - relativedelta(month=1)
+                if current.month == 1:
+                    prev_month = 12
+                    prev_year -= 1
+
+                
                 prev_allowance = Allowances.query \
                     .filter_by(user_id = user.id) \
-                    .filter(extract('month', Allowances.month) == (current.month-1)) \
-                    .filter(extract('year', Allowances.month) ==  current.year) \
+                    .filter(extract('month', Allowances.month) == prev_month) \
+                    .filter(extract('year', Allowances.month) ==  prev_year) \
                     .one_or_none()
       
                 if prev_allowance:
                     expenses = Expenses.query \
                         .filter_by(user_id = user.id) \
-                        .filter(extract('month', Expenses.timestamp) == (current.month-1)) \
-                        .filter(extract('year', Expenses.timestamp) == current.year) \
+                        .filter(extract('month', Expenses.timestamp) == prev_month) \
+                        .filter(extract('year', Expenses.timestamp) == prev_year) \
                         .all()
 
                     total_sum = sum([expense.amount for expense in expenses])
