@@ -29,11 +29,11 @@ const Login = () => {
     }
 
     useEffect(()=>{
-    
+        /*
         if(state.user) {
             navigate('/dashboard')
         }
-
+        */
     },[state])
 
 
