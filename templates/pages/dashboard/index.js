@@ -108,7 +108,7 @@ const Dashboard = () => {
     }
 
     const handleSignOut = async() => {
-        await signOut();
+        await signOut(dispatch);
         navigate('/login');
     }
 
