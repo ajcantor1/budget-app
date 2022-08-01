@@ -45,19 +45,19 @@ def get_allowance():
                 past_month = current - relativedelta(month=1)
                 prev_allowance = Allowances.query \
                     .filter_by(user_id = user.id) \
-                    .filter(extract('month', Allowances.month) == past_month.month) \
-                    .filter(extract('year', Allowances.month) == past_month.year) \
+                    .filter(extract('month', Allowances.month) == (current.month-1)) \
+                    .filter(extract('year', Allowances.month) ==  current.year) \
                     .one_or_none()
-                amount = allocation.amount-50
+      
                 if prev_allowance:
                     expenses = Expenses.query \
                         .filter_by(user_id = user.id) \
-                        .filter(extract('month', Expenses.timestamp) == past_month.month) \
-                        .filter(extract('year', Expenses.timestamp) == past_month.year) \
+                        .filter(extract('month', Expenses.timestamp) == (current.month-1)) \
+                        .filter(extract('year', Expenses.timestamp) == current.year) \
                         .all()
 
                     total_sum = sum([expense.amount for expense in expenses])
-                    amount = allocation.amount-50
+                    amount = allocation.amount+prev_allowance.amount-total_sum
 
                 allowance = Allowances(
                     user_id = user.id, 
