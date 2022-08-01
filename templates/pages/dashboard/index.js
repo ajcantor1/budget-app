@@ -115,7 +115,7 @@ const Dashboard = () => {
     return (
         <StyledContainer>
             <InnerContainer>
-                <SignOutLink onClick={() => handleSignOut()}></SignOutLink>
+                <SignOutLink onClick={() => handleSignOut()}>Sign Out</SignOutLink>
                 <AddButton onClick={() => setOpenModal(true)}>+</AddButton>
                 <SVGContainer>             
                     <Circle radius={75} percent={calculatePercent()} color={getColor()}></Circle>

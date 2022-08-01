@@ -12,6 +12,18 @@ export const InnerContainer = styled.div`
   flex-direction: column;
 `
 
+export const SignOutLink = styled.button`
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-size: 12px;
+  color:  #064b70;
+`
+
 export const AddButton = styled.button`
   font-size: 24px;
   border-radius: 70%;
